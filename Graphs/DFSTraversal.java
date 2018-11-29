@@ -2,7 +2,7 @@ package Basic;
 
 import java.util.*;
 
-public class DFS {
+public class DFSTraversal {
 
 	static int visit[] = new int[20];
 	
@@ -34,8 +34,7 @@ public class DFS {
 		
 		List<Integer> list[] = new LinkedList[n];
 		
-		int i;
-		for(i = 0; i < n; i++)
+		for(int i = 0; i < n; i++)
 		{
 			list[i] = new LinkedList<Integer>();
 		}
@@ -45,10 +44,9 @@ public class DFS {
 		insert(2 , 0 , list);
 		insert(2 , 3 , list);
 		insert(3 , 3 , list);
-		//insert(3 , 4 , list);
-		//System.out.println(list[2].size());
+		
 		dfs(2 , list);
 		
-		
+		sc.close();
 	}
 }
