@@ -100,7 +100,7 @@ public class CutVertex {
 		g.addEdge(4, 5);
 		g.addEdge(5, 6);
 		g.calculateFUP(0, -1 , 0);
-		boolean val = g.cutVertexNot(3);
+		boolean val = g.cutVertexNot(6);
 		if(val == true)
 			System.out.println("It is a cut vertex");
 		else

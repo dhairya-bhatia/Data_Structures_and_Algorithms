@@ -34,7 +34,7 @@ public class FindBridge {
 		void addEdge(int x , int y)
 		{
 			list.get(x).add(y);
-			list.get(y).add(x);                       // For Undirected Graph
+			//list.get(y).add(x);                       // For Undirected Graph
 		}
 		void calculateFUP(int source , int parent , int dep)
 		{
@@ -70,16 +70,32 @@ public class FindBridge {
 	
 	public static void main(String[] args)
 	{
-		Graph g = new Graph(7 , 7);
-		g.addEdge(0, 1);
+		Graph g = new Graph(10 , 12);
+		/*g.addEdge(0, 1);
 		g.addEdge(0, 2);
 		g.addEdge(1, 3);
 		g.addEdge(3, 4);
 		g.addEdge(3, 6);
 		g.addEdge(4, 5);
 		g.addEdge(5, 6);
+		g.calculateFUP(0, -1 , 0);*/
+		g.addEdge(0, 1);
+		g.addEdge(0, 3);
+		g.addEdge(7, 0);
+		g.addEdge(3, 7);
+		g.addEdge(1, 4);
+		g.addEdge(4,5);
+		g.addEdge(4,6);
+		g.addEdge(6,1);
+		g.addEdge(6, 8);
+		g.addEdge(8, 2);
+		g.addEdge(2, 9);
+		g.addEdge(9, 6);
 		g.calculateFUP(0, -1 , 0);
-		boolean val = g.IsBridgeOrNot(1, 3);
+		for(int i = 0; i < g.fup.length; i++)
+			System.out.println("Node "+i +" "+ "fup = "+ g.fup[i]+" depth = "+g.depth[i]);
+		
+		boolean val = g.IsBridgeOrNot(0,1);
 		if(val == true)
 			System.out.println("Bridge Exists");
 		else

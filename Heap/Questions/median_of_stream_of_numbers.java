@@ -1,8 +1,10 @@
+/*  A stream of Numbers is coming ... You have to tell median of the stream at any point of time asked */
+
 import java.util.*;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class median_of_stream_of_numbers {
+public class Median_Of_Stream_Of_Numbers {
 
 	void AddNumber(PriorityQueue<Integer> min , PriorityQueue<Integer> max , int num)
 	{
@@ -13,12 +15,11 @@ public class median_of_stream_of_numbers {
 	}
 	void Maintain_Balance(PriorityQueue<Integer> min , PriorityQueue<Integer> max)
 	{
-		PriorityQueue<Integer> small = (min.size() < max.size()) ? min : max;
-		PriorityQueue<Integer> large = (min.size() > max.size()) ? min : max;
+		PriorityQueue<Integer> small = (min.size() < max.size()) ? min : max;  //small will contain address of either min heap or max heap 
+		PriorityQueue<Integer> large = (min.size() > max.size()) ? min : max;  //large will contain address of either min heap or max heap
+		
 		if(large.size() - small.size() >= 2)
-		{
-			small.add(large.poll());
-		}
+		   	small.add(large.poll());	
 	}
 	double Median(PriorityQueue<Integer> min , PriorityQueue<Integer> max)
 	{
@@ -39,7 +40,7 @@ public class median_of_stream_of_numbers {
 	
 	public static void main(String[] args)
 	{
-		median_of_stream_of_numbers obj = new median_of_stream_of_numbers();
+		Median_Of_Stream_Of_Numbers obj = new Median_Of_Stream_Of_Numbers();
 		PriorityQueue<Integer> min = new PriorityQueue<Integer>();
 		PriorityQueue<Integer> max = new PriorityQueue<Integer>(Collections.reverseOrder());
 		System.out.println("Enter size of array of numbers");
@@ -61,5 +62,6 @@ public class median_of_stream_of_numbers {
 			System.out.println("Median at this point is ->  ");
 			System.out.println(obj.Median(min, max));
 		}
+		sc.close();
 	}           
 }
