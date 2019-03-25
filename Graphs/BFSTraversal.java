@@ -33,7 +33,7 @@ public class BFSTraversal {
 			list.get(x).add(y);                //For Directed Graph
 		}
 		
-		void BFS(int source)
+		void bfsTraversal(int source)
 		{
 			qu.add(source);
 			id[source] = color.GREY;
@@ -51,6 +51,7 @@ public class BFSTraversal {
 						qu.add(temp);
 					}
 				}
+				id[source] = color.BLACK;
 			}
 		}
 	}
@@ -64,6 +65,6 @@ public class BFSTraversal {
 		    g.addEdge(2, 0); 
 		    g.addEdge(2, 3); 
 		    g.addEdge(3, 3); 
-		    g.BFS(2);
+		    g.bfsTraversal(2);
 	}
 }

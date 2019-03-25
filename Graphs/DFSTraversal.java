@@ -4,49 +4,56 @@ import java.util.*;
 
 public class DFSTraversal {
 
-	static int visit[] = new int[20];
-	
-	static void dfs(int x , List<Integer>[] list)
+	static class Graph 
 	{
-		visit[x] = 1;
-		System.out.println(x+" ");
-		for(int i = 0; i < list[x].size(); i++)
+		int vertices;
+		int edges;
+		LinkedList<Integer>[] list;
+		boolean[] visited;
+		Queue<Integer> qu = new LinkedList<>();
+		public Graph(int v , int e)
 		{
-			int c = list[x].get(i);
-			if(visit[c] != 0)
+			vertices = v;
+			edges = e;
+			visited = new boolean[v];
+			list = new LinkedList[vertices];
+			
+			for(int i = 0; i < v; i++)
 			{
-			continue;
+				list[i] = new LinkedList<>();
 			}
-			dfs(c , list);
 		}
-		visit[x] = 2;
-	}
+		void addEdge(int x , int y)
+		{
+			list[x].add(y);                //For Directed Graph
+		}
+		
 	
-	static void insert(int x , int y, List<Integer>[] list)
-	{
-		list[x].add(y);
+		void dfsTraversal(int source)
+		{
+			visited[source] = true;
+			System.out.println(source);
+			Iterator<Integer> it = list[source].iterator();
+			while(it.hasNext())
+			{
+				int x = it.next();
+				if(visited[x] == false)
+				{
+					dfsTraversal(x);
+				}
+			}
+			
+		}
 	}
 	public static void main(String[] args)
 	{		
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter number of nodes");
-		int n = sc.nextInt();
-		
-		List<Integer> list[] = new LinkedList[n];
-		
-		for(int i = 0; i < n; i++)
-		{
-			list[i] = new LinkedList<Integer>();
-		}
-		insert(0 , 1 , list);
-		insert(0 , 2 , list);
-		insert(1 , 2 , list);
-		insert(2 , 0 , list);
-		insert(2 , 3 , list);
-		insert(3 , 3 , list);
-		
-		dfs(2 , list);
-		
-		sc.close();
-	}
+		Graph g = new Graph(4, 6);
+		g.addEdge(0, 1); 
+	    g.addEdge(0, 2); 
+	    g.addEdge(1, 2); 
+	    g.addEdge(2, 0); 
+	    g.addEdge(2, 3); 
+	    g.addEdge(3, 3); 
+	    g.dfsTraversal(2);
+	 }
 }
