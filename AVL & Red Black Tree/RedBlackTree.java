@@ -66,7 +66,7 @@ public class RedBlackTree {
 	public void insert(int data)
 	{
 		root = insert(root, data);
-		root.color = false;
+		root.color = false;        //Root's color is always black
 	}
 	
 	private Node insert(Node root, int data)
