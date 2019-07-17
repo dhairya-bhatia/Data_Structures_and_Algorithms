@@ -72,11 +72,11 @@ public class KmpStringSearching {
 	public static void main(String[] args)
 	{
 		String str = "ABABDABACDABABCABAB";
-        String subString = "ABABCABAB";
-        int index = KMP(str.toCharArray(), subString.toCharArray());
-        if(index != -1)
-        	System.out.println("Substring found at index "+index);
-        else
-        	System.out.println("Substring not Found");
+		String subString = "ABABCABAB";
+		int index = KMP(str.toCharArray(), subString.toCharArray());
+		if(index != -1)
+			System.out.println("Substring found at index "+index);
+		else
+			System.out.println("Substring not Found");
 	}
 }
